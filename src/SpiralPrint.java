@@ -7,7 +7,7 @@ public class SpiralPrint {
 
     public void PrintSpiral(int M, int N, ArrayList<ArrayList<Integer>> array) {
 
-        int p = N / 2, stl = 0, str = 0; // stl - i; str - j; p - number of turns a[i,j];
+        int p = N / 2, tr = 0; // stl - i; str - j; p - number of turns a[i,j];
         int k = 0, maxj = M,
                 maxi = N;    //used maxi; maxj - because it is the third and fourth cycle needs a constant of maximum
         int numOfElem = N*M, stop=0;
@@ -15,15 +15,15 @@ public class SpiralPrint {
         // used k - so as not to drop into on old element .
         do {
 
-            for (int j = str; j < M; j++) {
+            for (int j = tr; j < M; j++) {
                 if(stop == numOfElem) break;
-                int i = stl;
+                int i = tr;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
                 stop++;
 
             }
 
-            for (int i = stl + 1; i < N; i++) {
+            for (int i = tr + 1; i < N; i++) {
                 if(stop == numOfElem) break;
                 int j = M - 1;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
@@ -31,7 +31,7 @@ public class SpiralPrint {
 
             }
 
-            for (int j = maxj - 2 - stl; j >= k; j--) {
+            for (int j = maxj - 2 - tr; j >= k; j--) {
                 if(stop == numOfElem) break;
                 int i = N - 1;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
@@ -39,9 +39,9 @@ public class SpiralPrint {
 
             }
 
-            for (int i = maxi - 2 - str; i > k; i--) {
+            for (int i = maxi - 2 - tr; i > k; i--) {
                 if(stop == numOfElem) break;
-                int j = str;
+                int j = tr;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
                 stop++;
 
@@ -49,8 +49,7 @@ public class SpiralPrint {
 
             N--;
             M--;
-            str++;
-            stl++;
+            tr++;
             k++;
         } while (N > p);
     }

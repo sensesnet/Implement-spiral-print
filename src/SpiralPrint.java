@@ -10,32 +10,40 @@ public class SpiralPrint {
         int p = N / 2, stl = 0, str = 0; // stl - i; str - j; p - number of turns a[i,j];
         int k = 0, maxj = M,
                 maxi = N;    //used maxi; maxj - because it is the third and fourth cycle needs a constant of maximum
-
+        int numOfElem = N*M, stop=0;
 
         // used k - so as not to drop into on old element .
         do {
+
             for (int j = str; j < M; j++) {
+                if(stop == numOfElem) break;
                 int i = stl;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
+                stop++;
 
             }
 
             for (int i = stl + 1; i < N; i++) {
-
+                if(stop == numOfElem) break;
                 int j = M - 1;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
+                stop++;
 
             }
 
             for (int j = maxj - 2 - stl; j >= k; j--) {
-
+                if(stop == numOfElem) break;
                 int i = N - 1;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
+                stop++;
+
             }
 
-            for (int i = maxi - 2 - stl; i > k; i--) {
-                int j = stl;
+            for (int i = maxi - 2 - str; i > k; i--) {
+                if(stop == numOfElem) break;
+                int j = str;
                 System.out.print("a[" + i + "," + j + "] = " + array.get(j).get(i) + "; ");
+                stop++;
 
             }
 
